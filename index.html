@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FitCRM — Simple Client Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- App Shell -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#new-client" aria-label="FitCRM Home">
+        <span class="brand-mark">🏋️‍♀️</span>
+        <span class="brand-text">FitCRM</span>
+      </a>
+
+      <!-- Simple tab navigation (anchors) -->
+      <nav class="nav">
+        <a class="nav-link" href="#new-client">New Client</a>
+        <a class="nav-link" href="#client-list">Client List</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main">
+    <!-- Page 1: New Client Form -->
+    <section id="new-client" class="page card">
+      <div class="page-header">
+        <h1>New Client</h1>
+        <p class="muted">Add a new client to your program (placeholder only — no data is saved).</p>
+      </div>
+
+      <form class="form" aria-describedby="form-note">
+        <div class="grid">
+          <div class="field">
+            <label for="fullName">Full Name</label>
+            <input id="fullName" name="fullName" type="text" placeholder="e.g., Jordan Smith" required>
+          </div>
+
+          <div class="field">
+            <label for="age">Age</label>
+            <input id="age" name="age" type="number" min="12" max="100" placeholder="e.g., 29" required>
+          </div>
+
+          <div class="field">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+              <option value="" disabled selected>Select gender</option>
+              <option>Female</option>
+              <option>Male</option>
+              <option>Non-binary</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="name@example.com" required>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="+1 (555) 123-4567" required>
+          </div>
+
+          <div class="field">
+            <label for="goal">Fitness Goal</label>
+            <input id="goal" name="goal" type="text" list="goalOptions" placeholder="e.g., Weight Loss" />
+            <datalist id="goalOptions">
+              <option value="Weight Loss"></option>
+              <option value="Muscle Gain"></option>
+              <option value="General Fitness"></option>
+              <option value="Endurance"></option>
+              <option value="Mobility"></option>
+            </datalist>
+          </div>
+
+          <div class="field">
+            <label for="startDate">Membership Start Date</label>
+            <input id="startDate" name="startDate" type="date" required>
+          </div>
+        </div>
+
+        <div class="actions">
+          <!-- Placeholder only -->
+          <button type="button" class="btn primary" aria-describedby="form-note">Add Client</button>
+          <p id="form-note" class="hint">This is a demo — the button is a placeholder and does not save data.</p>
+        </div>
+      </form>
+    </section>
+
+    <!-- Page 2: Client List View -->
+    <section id="client-list" class="page card">
+      <div class="page-header">
+        <h1>Clients</h1>
+        <p class="muted">Browse your current clients (sample data). Actions are placeholders.</p>
+      </div>
+
+      <!-- Search (placeholder) -->
+      <div class="toolbar">
+        <label class="search" aria-label="Search by client name">
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="icon">
+            <path d="M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input type="search" placeholder="Search by name…" />
+        </label>
+        <a href="#new-client" class="btn subtle">+ Add New</a>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table" role="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Fitness Goal</th>
+              <th scope="col">Start Date</th>
+              <th scope="col" class="actions-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 10 sample clients -->
+            <tr>
+              <td>Jordan Smith</td>
+              <td>jordan.smith@example.com</td>
+              <td>+1 (555) 201-8899</td>
+              <td>Weight Loss</td>
+              <td>2025-01-10</td>
+              <td class="actions-col">
+                <button class="btn tiny">Edit</button>
+                <button class="btn tiny danger">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Aisha Khan</td>
+              <td>aisha.khan@example.com</td>
+              <td>+44 7700 900123</td>
+              <td>Muscle Gain</td>
+              <td>2025-02-03</td>
+              <td class="actions-col">
+                <button class="btn tiny">Edit</button>
+                <button class="btn tiny danger">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Luis Fernandez</td>
+              <td>luis.fernandez@example.com</td>
+              <td>+34 600 123 456</td>
+              <td>General Fitness</td>
+              <td>2024-12-14</td>
+              <td class="actions-col">
+                <button class="btn tiny">Edit</button>
+                <button class="btn tiny danger">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Emily Chen</td>
+              <td>emily.chen@example.com</td>
+              <td>+61 412 555 777</td>
+              <td>Endurance</td>
+              <td>2025-03-22</td>
+              <td class="actions-col">
+                <button class="btn tiny">Edit</button>
+                <button class="btn tiny danger">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Omar Hassan</td>
+              <td>omar.hassan@example.com</td>
+              <td>+20 100 234 5678</td>
+              <td>Weight Loss</td>
+              <td>2025-04-09</td>
+              <td class="actions-col">
+                <button class="btn tiny">Edit</button>
+                <button class="btn tiny danger">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Sophia Rossi</td>
+              <td>sophia.rossi@example.com</td>
+              <td>+39 340 222 3344</td>
+              <td>Mobility</td>
+              <td>2024-11-01</td>
+              <td class="actions-col">
+                <button class="btn tiny">Edit</button>
+                <button class="btn tiny danger">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Michael Brown</td>
+              <td>michael.brown@example.com</td>
+              <td>+1 (555) 903-1122</td>
+              <td>Muscle Gain</td>
+              <td>2025-05-15</td>
+              <td class="actions-col">
+                <button class="btn tiny">Edit</button>
+                <button class="btn tiny danger">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Haruto Sato</td>
+              <td>haruto.sato@example.com</td>
+              <td>+81 90 1234 5678</td>
+              <td>General Fitness</td>
+              <td>2025-02-28</td>
+              <td class="actions-col">
+                <button class="btn tiny">Edit</button>
+                <button class="btn tiny danger">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Anna Müller</td>
+              <td>anna.mueller@example.com</td>
+              <td>+49 1512 3456789</td>
+              <td>Endurance</td>
+              <td>2024-10-05</td>
+              <td class="actions-col">
+                <button class="btn tiny">Edit</button>
+                <button class="btn tiny danger">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>David Lee</td>
+              <td>david.lee@example.com</td>
+              <td>+1 (555) 777-0099</td>
+              <td>Weight Loss</td>
+              <td>2025-06-01</td>
+              <td class="actions-col">
+                <button class="btn tiny">Edit</button>
+                <button class="btn tiny danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="hint">Tip: On mobile, scroll the table horizontally if it overflows.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2025</span> FitCRM • A lightweight CRM demo for fitness professionals</p>
+      <p class="muted">Built with HTML &amp; CSS • No JavaScript required</p>
+    </div>
+  </footer>
+
+  <!-- No JS needed; small progressive enhancement to update the year if JS is ever allowed -->
+  <noscript></noscript>
+</body>
+</html>
