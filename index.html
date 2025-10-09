@@ -37,19 +37,66 @@
         </div>
         <div class="hero-image">
             <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                <!-- Pyramids silhouette -->
-                <polygon points="50,250 150,100 250,250" fill="#D4A574" opacity="0.3"/>
-                <polygon points="180,250 280,120 380,250" fill="#C19660" opacity="0.3"/>
+                <!-- Background gradient -->
+                <defs>
+                    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#FFE4B5;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#FFD4A3;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="pyramidGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#B8935F;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="pyramidGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#C19660;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#A67C52;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Sky background -->
+                <rect x="0" y="0" width="400" height="250" fill="url(#skyGradient)" opacity="0.3"/>
+                
+                <!-- Desert ground -->
+                <ellipse cx="200" cy="280" rx="250" ry="50" fill="#E6C9A8" opacity="0.5"/>
+                
+                <!-- Great Pyramid (left) -->
+                <polygon points="50,250 150,100 250,250" fill="url(#pyramidGradient1)" stroke="#A67C52" stroke-width="1"/>
+                <!-- Pyramid shadow -->
+                <polygon points="150,100 250,250 220,250 150,130" fill="#000000" opacity="0.15"/>
+                
+                <!-- Second Pyramid (right) -->
+                <polygon points="180,250 280,120 380,250" fill="url(#pyramidGradient2)" stroke="#8B6938" stroke-width="1"/>
+                <!-- Pyramid shadow -->
+                <polygon points="280,120 380,250 350,250 280,150" fill="#000000" opacity="0.15"/>
+                
                 <!-- Sun -->
-                <circle cx="320" cy="80" r="30" fill="#FFB84D" opacity="0.5"/>
-                <!-- Person exercising -->
+                <circle cx="320" cy="60" r="35" fill="#FFB84D" stroke="#FFA500" stroke-width="2"/>
+                <circle cx="320" cy="60" r="28" fill="#FFCC66"/>
+                
+                <!-- Person exercising with weights -->
                 <g transform="translate(200, 180)">
-                    <circle cx="0" cy="-20" r="8" fill="#2C3E50"/>
-                    <rect x="-3" y="-12" width="6" height="20" fill="#2C3E50"/>
-                    <rect x="-15" y="-8" width="30" height="4" fill="#2C3E50" transform="rotate(-20)"/>
-                    <rect x="-8" y="8" width="8" height="25" fill="#2C3E50" transform="rotate(-10)"/>
-                    <rect x="0" y="8" width="8" height="25" fill="#2C3E50" transform="rotate(10)"/>
+                    <!-- Head -->
+                    <circle cx="0" cy="-20" r="10" fill="#2C3E50" stroke="#1A252F" stroke-width="1"/>
+                    <!-- Body -->
+                    <rect x="-4" y="-10" width="8" height="22" fill="#2C3E50"/>
+                    <!-- Arms holding barbell -->
+                    <rect x="-25" y="-8" width="50" height="5" fill="#1A252F" rx="2"/>
+                    <!-- Weight plates -->
+                    <rect x="-28" y="-12" width="6" height="13" fill="#34495E" rx="1"/>
+                    <rect x="22" y="-12" width="6" height="13" fill="#34495E" rx="1"/>
+                    <!-- Left arm -->
+                    <rect x="-12" y="-10" width="8" height="15" fill="#2C3E50" transform="rotate(-15 -8 -2)"/>
+                    <!-- Right arm -->
+                    <rect x="4" y="-10" width="8" height="15" fill="#2C3E50" transform="rotate(15 8 -2)"/>
+                    <!-- Legs -->
+                    <rect x="-10" y="10" width="7" height="28" fill="#2C3E50" transform="rotate(-8 -6 24)"/>
+                    <rect x="3" y="10" width="7" height="28" fill="#2C3E50" transform="rotate(8 6 24)"/>
                 </g>
+                
+                <!-- Small details - birds in sky -->
+                <path d="M 80 40 Q 85 35, 90 40" stroke="#8B6938" stroke-width="2" fill="none"/>
+                <path d="M 100 50 Q 105 45, 110 50" stroke="#8B6938" stroke-width="2" fill="none"/>
+                <path d="M 120 35 Q 125 30, 130 35" stroke="#8B6938" stroke-width="1.5" fill="none"/>
             </svg>
         </div>
     </div>
