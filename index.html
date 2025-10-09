@@ -1,160 +1,422 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FitCRM Egypt — Client Manager for Fitness Pros</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitNile CRM - Fitness Client Management</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#profile" aria-label="FitCRM Egypt Home">
-        <img src="assets/icons/dumbbell.png" alt="FitCRM Egypt Logo" class="brand-logo">
-        <span class="brand-text">FitCRM Egypt</span>
-      </a>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <h1>FitNile CRM</h1>
+            </div>
+            <nav>
+                <button class="nav-btn active" onclick="showPage('new-client')">
+                    <i class="fas fa-user-plus"></i>
+                    <span>New Client</span>
+                </button>
+                <button class="nav-btn" onclick="showPage('client-list')">
+                    <i class="fas fa-users"></i>
+                    <span>Client List</span>
+                </button>
+            </nav>
+        </div>
+    </header>
 
-      <nav class="nav">
-        <a class="nav-link" href="#new-client">New Client</a>
-        <a class="nav-link" href="#client-list">Client List</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container main">
-    <!-- Profile Section -->
-    <section id="profile" class="page card hero">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1>Welcome to FitCRM Egypt 🏋️</h1>
-          <p>Simple. Warm. Inviting. A modern CRM made for Egyptian trainers and small gyms.  
-             Add and track clients with ease.</p>
-          <a href="#new-client" class="btn primary">Start Adding Clients</a>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Empowering Fitness Professionals in Egypt</h2>
+            <p>Manage your clients, track their goals, grow your business</p>
         </div>
         <div class="hero-image">
-          <img src="assets/icons/trainer.png" alt="Trainer illustration">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Pyramids silhouette -->
+                <polygon points="50,250 150,100 250,250" fill="#D4A574" opacity="0.3"/>
+                <polygon points="180,250 280,120 380,250" fill="#C19660" opacity="0.3"/>
+                <!-- Sun -->
+                <circle cx="320" cy="80" r="30" fill="#FFB84D" opacity="0.5"/>
+                <!-- Person exercising -->
+                <g transform="translate(200, 180)">
+                    <circle cx="0" cy="-20" r="8" fill="#2C3E50"/>
+                    <rect x="-3" y="-12" width="6" height="20" fill="#2C3E50"/>
+                    <rect x="-15" y="-8" width="30" height="4" fill="#2C3E50" transform="rotate(-20)"/>
+                    <rect x="-8" y="8" width="8" height="25" fill="#2C3E50" transform="rotate(-10)"/>
+                    <rect x="0" y="8" width="8" height="25" fill="#2C3E50" transform="rotate(10)"/>
+                </g>
+            </svg>
         </div>
-      </div>
-    </section>
-
-    <!-- Page 1: New Client Form -->
-    <section id="new-client" class="page card">
-      <div class="page-header">
-        <h1>New Client</h1>
-        <p class="muted">Add a new client to your program (placeholder only — no data is saved).</p>
-      </div>
-
-      <form class="form">
-        <div class="grid">
-          <div class="field">
-            <label for="fullName">Full Name</label>
-            <input id="fullName" name="fullName" type="text" placeholder="e.g., Ahmed Hassan" required>
-          </div>
-
-          <div class="field">
-            <label for="age">Age</label>
-            <input id="age" name="age" type="number" min="12" max="100" placeholder="e.g., 27" required>
-          </div>
-
-          <div class="field">
-            <label for="gender">Gender</label>
-            <select id="gender" name="gender" required>
-              <option value="" disabled selected>Select gender</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="ahmed.hassan@example.com" required>
-          </div>
-
-          <div class="field">
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" placeholder="+20 101 234 5678" required>
-          </div>
-
-          <div class="field">
-            <label for="goal">Fitness Goal</label>
-            <input id="goal" name="goal" type="text" list="goalOptions" placeholder="e.g., Muscle Gain" />
-            <datalist id="goalOptions">
-              <option value="Weight Loss"></option>
-              <option value="Muscle Gain"></option>
-              <option value="General Fitness"></option>
-              <option value="Endurance"></option>
-            </datalist>
-          </div>
-
-          <div class="field">
-            <label for="startDate">Membership Start Date</label>
-            <input id="startDate" name="startDate" type="date" required>
-          </div>
-        </div>
-
-        <div class="actions">
-          <button type="button" class="btn primary">Add Client</button>
-          <p class="hint">This is a demo — the button is a placeholder.</p>
-        </div>
-      </form>
-    </section>
-
-    <!-- Page 2: Client List -->
-    <section id="client-list" class="page card">
-      <div class="page-header">
-        <h1>Client List</h1>
-        <p class="muted">View your clients (sample data). Actions are placeholders.</p>
-      </div>
-
-      <div class="toolbar">
-        <label class="search">
-          <img src="assets/icons/gym.png" alt="search icon" class="search-icon">
-          <input type="search" placeholder="Search by name…" />
-        </label>
-        <a href="#new-client" class="btn subtle">+ Add New</a>
-      </div>
-
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Fitness Goal</th>
-              <th>Start Date</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Ahmed Hassan</td><td>ahmed.hassan@example.com</td><td>+20 101 123 4567</td><td>Muscle Gain</td><td>2025-03-01</td><td><button class="btn tiny">Edit</button><button class="btn tiny danger">Delete</button></td></tr>
-            <tr><td>Salma Ali</td><td>salma.ali@example.com</td><td>+20 102 234 5678</td><td>Weight Loss</td><td>2025-02-10</td><td><button class="btn tiny">Edit</button><button class="btn tiny danger">Delete</button></td></tr>
-            <tr><td>Khaled Mostafa</td><td>khaled.mostafa@example.com</td><td>+20 100 876 5432</td><td>General Fitness</td><td>2024-12-15</td><td><button class="btn tiny">Edit</button><button class="btn tiny danger">Delete</button></td></tr>
-            <tr><td>Maryam Youssef</td><td>maryam.youssef@example.com</td><td>+20 101 777 1122</td><td>Endurance</td><td>2025-04-05</td><td><button class="btn tiny">Edit</button><button class="btn tiny danger">Delete</button></td></tr>
-            <tr><td>Omar Samir</td><td>omar.samir@example.com</td><td>+20 109 123 9988</td><td>Muscle Gain</td><td>2025-01-19</td><td><button class="btn tiny">Edit</button><button class="btn tiny danger">Delete</button></td></tr>
-            <tr><td>Layla Ibrahim</td><td>layla.ibrahim@example.com</td><td>+20 103 666 5555</td><td>Weight Loss</td><td>2024-11-22</td><td><button class="btn tiny">Edit</button><button class="btn tiny danger">Delete</button></td></tr>
-            <tr><td>Mohamed Elmasry</td><td>mohamed.elmasry@example.com</td><td>+20 106 444 3333</td><td>General Fitness</td><td>2025-02-01</td><td><button class="btn tiny">Edit</button><button class="btn tiny danger">Delete</button></td></tr>
-            <tr><td>Nour El Sherif</td><td>nour.sherif@example.com</td><td>+20 108 222 1111</td><td>Weight Loss</td><td>2025-06-01</td><td><button class="btn tiny">Edit</button><button class="btn tiny danger">Delete</button></td></tr>
-            <tr><td>Hassan Abdelrahman</td><td>hassan.abdelrahman@example.com</td><td>+20 105 333 9999</td><td>Muscle Gain</td><td>2025-05-10</td><td><button class="btn tiny">Edit</button><button class="btn tiny danger">Delete</button></td></tr>
-            <tr><td>Farida Tarek</td><td>farida.tarek@example.com</td><td>+20 107 111 8888</td><td>Endurance</td><td>2025-07-15</td><td><button class="btn tiny">Edit</button><button class="btn tiny danger">Delete</button></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p class="hint">Scroll horizontally on mobile to view the full table.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© 2025 FitCRM Egypt — Made for trainers and gyms.</p>
-      <p class="muted">HTML & CSS only • Simple & warm design</p>
     </div>
-  </footer>
+
+    <main class="container">
+        <!-- Page 1: New Client Form -->
+        <section id="new-client" class="page active">
+            <div class="page-header">
+                <i class="fas fa-user-plus"></i>
+                <h2>Add New Client</h2>
+            </div>
+            
+            <form class="client-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">
+                            <i class="fas fa-signature"></i>
+                            Full Name
+                        </label>
+                        <input type="text" id="fullName" name="fullName" required placeholder="Enter client's full name">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="age">
+                                <i class="fas fa-calendar-alt"></i>
+                                Age
+                            </label>
+                            <input type="number" id="age" name="age" min="16" max="100" required placeholder="Age">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">
+                                <i class="fas fa-venus-mars"></i>
+                                Gender
+                            </label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            Email
+                        </label>
+                        <input type="email" id="email" name="email" required placeholder="client@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">
+                            <i class="fas fa-phone"></i>
+                            Phone
+                        </label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+20 123 456 7890">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal">
+                            <i class="fas fa-bullseye"></i>
+                            Fitness Goal
+                        </label>
+                        <select id="goal" name="goal" required>
+                            <option value="">Select Fitness Goal</option>
+                            <option value="weight-loss">Weight Loss</option>
+                            <option value="muscle-gain">Muscle Gain</option>
+                            <option value="general-fitness">General Fitness</option>
+                            <option value="endurance">Endurance Training</option>
+                            <option value="flexibility">Flexibility & Mobility</option>
+                            <option value="strength">Strength Training</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="startDate">
+                            <i class="fas fa-calendar-check"></i>
+                            Membership Start Date
+                        </label>
+                        <input type="date" id="startDate" name="startDate" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-plus-circle"></i>
+                        Add Client
+                    </button>
+                    <button type="reset" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i>
+                        Reset Form
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Page 2: Client List -->
+        <section id="client-list" class="page">
+            <div class="page-header">
+                <i class="fas fa-users"></i>
+                <h2>Client Directory</h2>
+            </div>
+
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchClient" placeholder="Search by client name..." onkeyup="filterClients()">
+            </div>
+
+            <div class="table-wrapper">
+                <table class="client-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-user"></i> Name</th>
+                            <th><i class="fas fa-envelope"></i> Email</th>
+                            <th><i class="fas fa-phone"></i> Phone</th>
+                            <th><i class="fas fa-bullseye"></i> Fitness Goal</th>
+                            <th><i class="fas fa-calendar"></i> Start Date</th>
+                            <th><i class="fas fa-cogs"></i> Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clientTableBody">
+                        <tr>
+                            <td data-label="Name">Ahmed Hassan</td>
+                            <td data-label="Email">ahmed.hassan@email.com</td>
+                            <td data-label="Phone">+20 122 345 6789</td>
+                            <td data-label="Goal"><span class="goal-badge weight-loss">Weight Loss</span></td>
+                            <td data-label="Start Date">2024-01-15</td>
+                            <td data-label="Actions">
+                                <div class="action-buttons">
+                                    <button class="btn-icon edit" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="Name">Fatima Ali</td>
+                            <td data-label="Email">fatima.ali@email.com</td>
+                            <td data-label="Phone">+20 100 234 5678</td>
+                            <td data-label="Goal"><span class="goal-badge muscle-gain">Muscle Gain</span></td>
+                            <td data-label="Start Date">2024-02-01</td>
+                            <td data-label="Actions">
+                                <div class="action-buttons">
+                                    <button class="btn-icon edit" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="Name">Mohamed Ibrahim</td>
+                            <td data-label="Email">mohamed.ibrahim@email.com</td>
+                            <td data-label="Phone">+20 111 876 5432</td>
+                            <td data-label="Goal"><span class="goal-badge general-fitness">General Fitness</span></td>
+                            <td data-label="Start Date">2024-01-20</td>
+                            <td data-label="Actions">
+                                <div class="action-buttons">
+                                    <button class="btn-icon edit" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="Name">Sara Mahmoud</td>
+                            <td data-label="Email">sara.mahmoud@email.com</td>
+                            <td data-label="Phone">+20 125 987 6543</td>
+                            <td data-label="Goal"><span class="goal-badge endurance">Endurance Training</span></td>
+                            <td data-label="Start Date">2024-03-10</td>
+                            <td data-label="Actions">
+                                <div class="action-buttons">
+                                    <button class="btn-icon edit" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="Name">Khaled Nasser</td>
+                            <td data-label="Email">khaled.nasser@email.com</td>
+                            <td data-label="Phone">+20 101 234 5678</td>
+                            <td data-label="Goal"><span class="goal-badge strength">Strength Training</span></td>
+                            <td data-label="Start Date">2024-02-15</td>
+                            <td data-label="Actions">
+                                <div class="action-buttons">
+                                    <button class="btn-icon edit" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="Name">Layla Abdel-Rahman</td>
+                            <td data-label="Email">layla.rahman@email.com</td>
+                            <td data-label="Phone">+20 109 876 5432</td>
+                            <td data-label="Goal"><span class="goal-badge flexibility">Flexibility & Mobility</span></td>
+                            <td data-label="Start Date">2024-01-05</td>
+                            <td data-label="Actions">
+                                <div class="action-buttons">
+                                    <button class="btn-icon edit" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="Name">Omar Farouk</td>
+                            <td data-label="Email">omar.farouk@email.com</td>
+                            <td data-label="Phone">+20 115 432 1098</td>
+                            <td data-label="Goal"><span class="goal-badge weight-loss">Weight Loss</span></td>
+                            <td data-label="Start Date">2024-03-01</td>
+                            <td data-label="Actions">
+                                <div class="action-buttons">
+                                    <button class="btn-icon edit" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="Name">Yasmine Samir</td>
+                            <td data-label="Email">yasmine.samir@email.com</td>
+                            <td data-label="Phone">+20 128 765 4321</td>
+                            <td data-label="Goal"><span class="goal-badge muscle-gain">Muscle Gain</span></td>
+                            <td data-label="Start Date">2024-02-20</td>
+                            <td data-label="Actions">
+                                <div class="action-buttons">
+                                    <button class="btn-icon edit" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="Name">Amr El-Shazly</td>
+                            <td data-label="Email">amr.shazly@email.com</td>
+                            <td data-label="Phone">+20 106 543 2109</td>
+                            <td data-label="Goal"><span class="goal-badge general-fitness">General Fitness</span></td>
+                            <td data-label="Start Date">2024-01-25</td>
+                            <td data-label="Actions">
+                                <div class="action-buttons">
+                                    <button class="btn-icon edit" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="Name">Nour Abdallah</td>
+                            <td data-label="Email">nour.abdallah@email.com</td>
+                            <td data-label="Phone">+20 112 098 7654</td>
+                            <td data-label="Goal"><span class="goal-badge endurance">Endurance Training</span></td>
+                            <td data-label="Start Date">2024-03-05</td>
+                            <td data-label="Actions">
+                                <div class="action-buttons">
+                                    <button class="btn-icon edit" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon delete" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 FitNile CRM - Empowering Egyptian Fitness Professionals</p>
+            <div class="footer-icons">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-dumbbell"></i>
+                <i class="fas fa-running"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.nav-btn').classList.add('active');
+        }
+
+        // Client search/filter function
+        function filterClients() {
+            const searchInput = document.getElementById('searchClient').value.toLowerCase();
+            const rows = document.querySelectorAll('#clientTableBody tr');
+            
+            rows.forEach(row => {
+                const name = row.querySelector('td[data-label="Name"]').textContent.toLowerCase();
+                if (name.includes(searchInput)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // Add placeholder alerts for buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add Client button
+            document.querySelector('.btn-primary').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Client would be added to the database (placeholder action)');
+            });
+
+            // Edit buttons
+            document.querySelectorAll('.btn-icon.edit').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('Edit client form would open (placeholder action)');
+                });
+            });
+
+            // Delete buttons
+            document.querySelectorAll('.btn-icon.delete').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('Client would be deleted after confirmation (placeholder action)');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
