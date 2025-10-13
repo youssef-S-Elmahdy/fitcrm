@@ -63,7 +63,7 @@ fitcrm/
 │   ├── 7_Search_Results.png
 │   ├── 8_Client_Edit.png
 │   └── 9_Client_Delete.png
-└── README.md           # Projecy Documentation
+└── README.md           # Project Documentation
   
 ```
 
@@ -91,44 +91,44 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ### Getting Started - New Client Registration
 When you first access FitNile CRM, you'll land on the **New Client** page where you can begin registering fitness clients. The navigation buttons are clearly visible at the top, with "New Client" selected by default.
 
-![New Client Page](./screenshots/screenshot1.png)
+![New Client Page](./screenshots/1_NewClient_Navigation.png)
 
 ### Completing the Registration Form
 Fill in all the required client information including personal details, contact information, fitness goals, and membership start date. The form features intuitive icons and placeholder text to guide you through each field.
 
-![Add Client Form](./screenshots/screenshot2.png)
+![Add Client Form](./screenshots/2_Form_Submission.png)
 
 ### Submitting Client Information
 After entering all client details, click the **Add Client** button to register them in the system. A confirmation dialog will appear indicating that the client would be added to the database (currently a placeholder action for demonstration purposes).
 
-![Client Added Confirmation](./screenshots/screenshot3.png)
+![Client Added Confirmation](./screenshots/3_Added_Client.png)
 
 ### Resetting the Form
 Need to clear the form and start over? Simply click the **Reset Form** button to instantly clear all fields and begin a fresh client registration.
 
-![Reset Form Button](./screenshots/screenshot4.png)
+![Reset Form Button](./screenshots/4_reset_form.png)
 
 ### Navigating to the Client Directory
 Click the **Client List** button in the navigation bar to access your complete client database. The page displays all registered clients in an organized table format.
 
-![Client List View](./screenshots/screenshot5.png)
+![Client List View](./screenshots/5_ClientList_Navigation.png)
 
 ### Searching for Specific Clients
 Use the search bar at the top of the Client Directory to quickly find specific clients. Simply type any part of the client's name to filter the results in real-time.
 
-![Client Search Feature](./screenshots/screenshot6.png)
+![Client Search Feature](./screenshots/6_Clinet_Search.png)
 
 ### Viewing Search Results
 As you type in the search box, the table automatically filters to show only matching clients. In this example, searching for "Ahmed" displays only Ahmed Hassan's record.
 
-![Filtered Search Results](./screenshots/screenshot7.png)
+![Filtered Search Results](./screenshots/7_Search_Results.png)
 
 ### Editing Client Information
 Click the green **Edit** button (pencil icon) next to any client record to modify their information. This triggers a placeholder dialog indicating that an edit form would open in a full implementation.
 
-![Edit Client Action](./screenshots/screenshot8.png)
+![Edit Client Action](./screenshots/8_Client_Edit.png)
 
 ### Deleting Client Records
 To remove a client from the database, click the red **Delete** button (trash icon). A confirmation dialog appears to prevent accidental deletions, ensuring data integrity.
 
-![Delete Client Confirmation](./screenshots/screenshot9.png)
+![Delete Client Confirmation](./screenshots/9_Client_Delete.png)
