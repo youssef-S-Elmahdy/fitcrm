@@ -668,10 +668,11 @@ footer p {
     }
     
     .client-table tbody td {
-        display: flex;
-        justify-content: space-between;
+        display: block;
         padding: var(--spacing-sm) 0;
         border-bottom: 1px solid #f0f0f0;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
     
     .client-table tbody td:last-child {
@@ -680,14 +681,26 @@ footer p {
     
     .client-table tbody td::before {
         content: attr(data-label);
+        display: block;
         font-weight: 600;
         color: var(--text-secondary);
-        flex-shrink: 0;
-        margin-right: var(--spacing-md);
+        margin-bottom: var(--spacing-xs);
+        font-size: 0.85rem;
+    }
+    
+    /* Special handling for email and phone to prevent overflow */
+    .client-table tbody td[data-label="Email"],
+    .client-table tbody td[data-label="Phone"] {
+        font-size: 0.9rem;
+    }
+    
+    /* Center the goal badge */
+    .client-table tbody td[data-label="Goal"] .goal-badge {
+        display: inline-block;
+        margin-top: var(--spacing-xs);
     }
     
     .client-table tbody td[data-label="Actions"] {
-        justify-content: center;
         padding-top: var(--spacing-md);
     }
     
@@ -696,7 +709,9 @@ footer p {
     }
     
     .action-buttons {
+        display: flex;
         justify-content: center;
+        gap: var(--spacing-md);
         width: 100%;
     }
 }
