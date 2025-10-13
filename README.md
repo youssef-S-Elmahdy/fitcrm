@@ -76,16 +76,6 @@ The application is deployed and accessible at: https://fitnile-crm.netlify.app/
 
 This project is deployed using **GitHub** and **Netlify** for continuous deployment:
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ## Application Walkthrough
 
 ### Getting Started - New Client Registration
@@ -132,3 +122,13 @@ Click the green **Edit** button (pencil icon) next to any client record to modif
 To remove a client from the database, click the red **Delete** button (trash icon). A confirmation dialog appears to prevent accidental deletions, ensuring data integrity.
 
 ![Delete Client Confirmation](./screenshots/9_Client_Delete.png)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
