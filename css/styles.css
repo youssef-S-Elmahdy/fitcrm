@@ -653,6 +653,12 @@ footer p {
         justify-content: center;
     }
     
+    /* Remove horizontal scroll from table wrapper */
+    .table-wrapper {
+        overflow-x: visible;
+        overflow-y: visible;
+    }
+    
     /* Table mobile card layout */
     .client-table thead {
         display: none;
