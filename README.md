@@ -187,7 +187,25 @@ Click on **any client row** to view their complete profile on Page 3:
 - **Exercise Recommendations**: 5 random exercises with complete step-by-step instructions from Free Exercise DB API
 - Click the **back button** to return to the client list
 
-### Visual Walkthrough (New Screenshots)
+### Visual Walkthrough (Screenshots)
+- **Navigate to New Client**: Landing page with New Client tab active  
+  ![Navigation to new client page](screenshots/1_NewClient_Navigation.png)
+- **Form Submission with Validation**: Completing required fields before adding a client  
+  ![Submitting the new client form](screenshots/2_Form_Submission.png)
+- **Client Added**: Success feedback after saving the new record  
+  ![Client added confirmation](screenshots/3_Added_Client.png)
+- **Reset Form**: Clear all fields to start a fresh entry  
+  ![Resetting the form](screenshots/4_reset_form.png)
+- **Navigate to Client List**: Switch to the directory to view saved clients  
+  ![Client list navigation](screenshots/5_ClientList_Navigation.png)
+- **Client Search**: Type-ahead filtering by client name  
+  ![Typing in search bar](screenshots/6_Clinet_Search.png)
+- **Search Results**: Filtered table showing matching clients only  
+  ![Filtered search results](screenshots/7_Search_Results.png)
+- **Edit Client (legacy)**: Launch edit mode from the actions column  
+  ![Editing a client from list](screenshots/8_Client_Edit.png)
+- **Delete Client (legacy)**: Remove a client from the list with action buttons  
+  ![Deleting a client from list](screenshots/9_Client_Delete.png)
 - **Edit Client (pre-update)**: Current client details pre-fill the form for quick edits  
   ![Edit client form populated](screenshots/10_Edit_Client.png)
 - **Delete Confirmation Prompt**: Safety dialog appears when attempting to remove a client  
