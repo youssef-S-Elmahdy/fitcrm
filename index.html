@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/main.js" defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -58,11 +59,14 @@
         <!-- Page 1: New Client Form -->
         <section id="new-client" class="page active">
             <div class="page-header">
+                <button id="editBackBtn" class="back-btn" onclick="cancelEdit()" style="display: none;">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
                 <i class="fas fa-user-plus"></i>
-                <h2>Add New Client</h2>
+                <h2 id="formPageTitle">Add New Client</h2>
             </div>
             
-            <form class="client-form">
+            <form id="clientForm" class="client-form">
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="fullName">
@@ -348,6 +352,101 @@
                 </table>
             </div>
         </section>
+
+        <!-- Page 3: Client View -->
+        <section id="client-view" class="page">
+            <div class="page-header">
+                <button class="back-btn" onclick="showPage('client-list')">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <i class="fas fa-user-circle"></i>
+                <h2>Client Details</h2>
+            </div>
+
+            <div class="client-view-container">
+                <!-- Client Information Card -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <i class="fas fa-id-card"></i>
+                        <h3>Personal Information</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label><i class="fas fa-user"></i> Full Name</label>
+                                <p id="viewClientName">-</p>
+                            </div>
+                            <div class="info-item">
+                                <label><i class="fas fa-birthday-cake"></i> Age</label>
+                                <p id="viewClientAge">-</p>
+                            </div>
+                            <div class="info-item">
+                                <label><i class="fas fa-venus-mars"></i> Gender</label>
+                                <p id="viewClientGender">-</p>
+                            </div>
+                            <div class="info-item">
+                                <label><i class="fas fa-envelope"></i> Email</label>
+                                <p id="viewClientEmail">-</p>
+                            </div>
+                            <div class="info-item">
+                                <label><i class="fas fa-phone"></i> Phone</label>
+                                <p id="viewClientPhone">-</p>
+                            </div>
+                            <div class="info-item">
+                                <label><i class="fas fa-calendar-check"></i> Start Date</label>
+                                <p id="viewClientStartDate">-</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fitness Goal Card -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <i class="fas fa-bullseye"></i>
+                        <h3>Fitness Goal</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="viewClientGoal" class="goal-display">-</div>
+                    </div>
+                </div>
+
+                <!-- Training History Card -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <i class="fas fa-history"></i>
+                        <h3>Training History</h3>
+                        <button class="add-session-btn" onclick="openAddSessionModal()">
+                            <i class="fas fa-plus"></i> Add Session
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="trainingHistory" class="training-history">
+                            <div class="empty-state">
+                                <i class="fas fa-clipboard-list"></i>
+                                <p>No training history yet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Session Exercises Card -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <i class="fas fa-dumbbell"></i>
+                        <h3>Suggested Exercises for Next Session</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="nextSessionExercises" class="exercises-list">
+                            <div class="loading-state">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Loading exercises...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -362,61 +461,55 @@
         </div>
     </footer>
 
-    <script>
-        // Page navigation
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Update nav buttons
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.closest('.nav-btn').classList.add('active');
-        }
+    <!-- Add Training Session Modal -->
+    <div id="addSessionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-plus-circle"></i> Add Training Session</h2>
+                <button class="modal-close" onclick="closeAddSessionModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="addSessionForm" onsubmit="handleAddSession(event)">
+                <div class="form-group">
+                    <label for="sessionDate"><i class="fas fa-calendar"></i> Date</label>
+                    <input type="date" id="sessionDate" name="sessionDate" required>
+                </div>
 
-        // Client search/filter function
-        function filterClients() {
-            const searchInput = document.getElementById('searchClient').value.toLowerCase();
-            const rows = document.querySelectorAll('#clientTableBody tr');
-            
-            rows.forEach(row => {
-                const name = row.querySelector('td[data-label="Name"]').textContent.toLowerCase();
-                if (name.includes(searchInput)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        }
+                <div class="form-group">
+                    <label for="sessionType"><i class="fas fa-dumbbell"></i> Session Type</label>
+                    <select id="sessionType" name="sessionType" required>
+                        <option value="">Select session type...</option>
+                        <option value="Cardio Session">Cardio Session</option>
+                        <option value="Strength Training">Strength Training</option>
+                        <option value="HIIT Training">HIIT Training</option>
+                        <option value="Yoga & Flexibility">Yoga & Flexibility</option>
+                        <option value="CrossFit">CrossFit</option>
+                        <option value="Boxing">Boxing</option>
+                        <option value="Swimming">Swimming</option>
+                        <option value="Sports Training">Sports Training</option>
+                        <option value="Personal Training">Personal Training</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
 
-        // Add placeholder alerts for buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add Client button
-            document.querySelector('.btn-primary').addEventListener('click', function(e) {
-                e.preventDefault();
-                alert('Client would be added to the database (placeholder action)');
-            });
+                <div class="form-group">
+                    <label for="sessionDuration"><i class="fas fa-clock"></i> Duration (minutes)</label>
+                    <input type="number" id="sessionDuration" name="sessionDuration" min="1" max="300" required>
+                </div>
 
-            // Edit buttons
-            document.querySelectorAll('.btn-icon.edit').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    alert('Edit client form would open (placeholder action)');
-                });
-            });
+                <div class="form-group">
+                    <label for="sessionNotes"><i class="fas fa-sticky-note"></i> Notes</label>
+                    <textarea id="sessionNotes" name="sessionNotes" rows="4" placeholder="Session details, exercises performed, progress notes..."></textarea>
+                </div>
 
-            // Delete buttons
-            document.querySelectorAll('.btn-icon.delete').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    alert('Client would be deleted after confirmation (placeholder action)');
-                });
-            });
-        });
-    </script>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeAddSessionModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Add Session</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
